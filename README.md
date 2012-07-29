@@ -9,10 +9,14 @@ About
 -----
 
 This is a biliard script, that was originally developped for LSS-RP.pl server.
+
 Demonstration video: http://www.youtube.com/watch?v=vB5U1Sqy37U
 
+
 It's (c) Wielebny 2012
+
 Licence: CC-BY-SA - http://creativecommons.org/licenses/by-sa/3.0/deed.en
+
 If you run this resource on your server, I would like to be attributed in game or your website.
 
 
@@ -32,7 +36,10 @@ You can edit table locations in billard.lua. They can be placed in different
 dimensions and interiors. Table rotation is not supported ATM.
 
 You should replace /resettable command with some kind of GUI.
+
 You should alter broadcastCaptionedEvent in interaction.lua to suit your server.
+
+You should consider extending this code and sharing back your changes. Main project repository is accessible at https://github.com/lpiob/mta-biliard
 
 Todo
 ----
@@ -45,6 +52,6 @@ Todo
 - Physics algorithms could be improved.
 - Other camera view-modes.
 
-If you'll upgrade this script, don't hestitate to contact me and share those changes.
-Main project repository is accessible at https://github.com/lpiob/mta-biliard
+
+
 
