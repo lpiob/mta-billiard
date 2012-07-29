@@ -29,6 +29,8 @@ mouse buttons to target and shoot.
 
 Use /resettable <number> to reposition balls on table.
 
+Script only simulates gaming physics. Enforcement of rules, point counting, etc. should be done by the players.
+
 Customizing
 -----------
 

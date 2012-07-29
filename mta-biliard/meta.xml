@@ -1,4 +1,5 @@
 <meta>
+	<info author="Wielebny" type="script" name="mta-biliard" website="https://github.com/lpiob/mta-biliard" />
 	<script src="utils.lua" type="client" />
 	<script src="utils.lua" type="server" />
 
