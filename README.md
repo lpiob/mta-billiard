@@ -1,14 +1,14 @@
-mta-biliard
+mta-billiard
 ===========
 
-Biliard script for Multi Theft Auto.
+Billiard script for Multi Theft Auto.
 
 ![Screenshot](http://i.imgur.com/6VEXP.png)
 
 About
 -----
 
-This is a biliard script, that was originally developped for LSS-RP.pl server.
+This is a billiard script, that was originally developped for LSS-RP.pl server.
 
 Demonstration video: http://www.youtube.com/watch?v=vB5U1Sqy37U
 
@@ -23,7 +23,7 @@ If you run this resource on your server, I would like to be attributed in game o
 How to use
 ----------
 
-Just start the resource. It will create two biliard tables at Grove Street.
+Just start the resource. It will create two billiard tables at Grove Street.
 There's no commands to start the game, just approach them, and use your
 mouse buttons to target and shoot.
 
@@ -41,7 +41,7 @@ You should replace /resettable command with some kind of GUI.
 
 You should alter broadcastCaptionedEvent in interaction.lua to suit your server.
 
-You should consider extending this code and sharing back your changes. Main project repository is accessible at https://github.com/lpiob/mta-biliard
+You should consider extending this code and sharing back your changes. Main project repository is accessible at https://github.com/lpiob/mta-billiard
 
 Todo
 ----
