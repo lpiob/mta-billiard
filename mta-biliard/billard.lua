@@ -1,7 +1,8 @@
 
 local tables={ 	-- define table positions here
   -- x,y,z, dimension, interior
-	{ 2488,-1667,13.34, 0,0},
+	{ 2488,-1667,13.34, 0,0}, -- two tables at grove street
+	{ 2488,-1660,13.34, 0,0},
 	-- you can define as many tables, as you wish
  }
 
@@ -11,7 +12,7 @@ Z=13.3
 local W=1.9
 local H=1
 
-local bile_oid={ 3106, 3100, 3101, 3102, 3103, 3104, 3105, 3002, 2995, 2996, 2997, 2998, 2999, 3000, 3001}
+local ballObjectIDs={ 3106, 3100, 3101, 3102, 3103, 3104, 3105, 3002, 2995, 2996, 2997, 2998, 2999, 3000, 3001}
 
 
 --2964
@@ -25,22 +26,22 @@ local function utworzBile(oid, x,y, z, d,i)
 end
 
 
-local function utworzWszystkieBile(stol)
-	if (tables[stol].bile) then
-		for i,v in ipairs(tables[stol].bile) do
-			destroyElement(v.obiekt)
+local function createBalls(tableNumber)
+	if (tables[tableNumber].bile) then
+		for i,v in ipairs(tables[tableNumber].bile) do
+			destroyElement(v.object)
 		end
 	end
 
-	bile_oid=shuffle(bile_oid)
-  tables[stol].bile={}
+	ballObjectIDs=shuffle(ballObjectIDs)
+  tables[tableNumber].bile={}
   local row=1
   local wrzedzie=0
   for i=1,15 do
-  	tables[stol].bile[i]={}
-----	bile[i].obiekt=utworzBile(bile_oid[i], 936.71+(row/14), 2507.05+(wrzedzie/14)-(row/28))
-	tables[stol].bile[i].obiekt=utworzBile(bile_oid[i], tables[stol][1]-W*10/30+((5-row)/14), tables[stol][2]+(wrzedzie/14)-(row/28)+0.035, tables[stol][3], tables[stol][4],tables[stol][5])
-	tables[stol].bile[i].movement={0,0}
+  	tables[tableNumber].bile[i]={}
+----	bile[i].object=utworzBile(ballObjectIDs[i], 936.71+(row/14), 2507.05+(wrzedzie/14)-(row/28))
+	tables[tableNumber].bile[i].object=utworzBile(ballObjectIDs[i], tables[tableNumber][1]-W*10/30+((5-row)/14), tables[tableNumber][2]+(wrzedzie/14)-(row/28)+0.035, tables[tableNumber][3], tables[tableNumber][4],tables[tableNumber][5])
+	tables[tableNumber].bile[i].movement={0,0}
 	wrzedzie=wrzedzie+1
 	if (wrzedzie==row) then
 		row=row+1
@@ -48,26 +49,26 @@ local function utworzWszystkieBile(stol)
 	end
   end
 
-  tables[stol].bile[16]={}
-  tables[stol].bile[16].obiekt=utworzBile(3003, tables[stol][1]+W*7/30, tables[stol][2], tables[stol][3], tables[stol][4],tables[stol][5])
+  tables[tableNumber].bile[16]={}
+  tables[tableNumber].bile[16].object=utworzBile(3003, tables[tableNumber][1]+W*7/30, tables[tableNumber][2], tables[tableNumber][3], tables[tableNumber][4],tables[tableNumber][5])
 
 end
 
-local function utworzLuzy(stol)
-	tables[stol].luzy={}
-	table.insert(tables[stol].luzy, createColSphere(tables[stol][1]+W/2, tables[stol][2]+H/2, tables[stol][3]-0.1,0.15))
-	table.insert(tables[stol].luzy, createColSphere(tables[stol][1]-W/2, tables[stol][2]+H/2, tables[stol][3]-0.1, 0.15))
-	table.insert(tables[stol].luzy, createColSphere(tables[stol][1]+W/2, tables[stol][2]-H/2, tables[stol][3]-0.1, 0.15))
-	table.insert(tables[stol].luzy, createColSphere(tables[stol][1]-W/2, tables[stol][2]-H/2, tables[stol][3]-0.1, 0.15))
+local function createPots(tableNumber)
+	tables[tableNumber].luzy={}
+	table.insert(tables[tableNumber].luzy, createColSphere(tables[tableNumber][1]+W/2, tables[tableNumber][2]+H/2, tables[tableNumber][3]-0.1,0.15))
+	table.insert(tables[tableNumber].luzy, createColSphere(tables[tableNumber][1]-W/2, tables[tableNumber][2]+H/2, tables[tableNumber][3]-0.1, 0.15))
+	table.insert(tables[tableNumber].luzy, createColSphere(tables[tableNumber][1]+W/2, tables[tableNumber][2]-H/2, tables[tableNumber][3]-0.1, 0.15))
+	table.insert(tables[tableNumber].luzy, createColSphere(tables[tableNumber][1]-W/2, tables[tableNumber][2]-H/2, tables[tableNumber][3]-0.1, 0.15))
 
-	table.insert(tables[stol].luzy, createColSphere(tables[stol][1]    , tables[stol][2]-H/1.8, tables[stol][3]-0.1, 0.15))
-	table.insert(tables[stol].luzy, createColSphere(tables[stol][1]    , tables[stol][2]+H/1.8, tables[stol][3]-0.1, 0.15))
+	table.insert(tables[tableNumber].luzy, createColSphere(tables[tableNumber][1]    , tables[tableNumber][2]-H/1.8, tables[tableNumber][3]-0.1, 0.15))
+	table.insert(tables[tableNumber].luzy, createColSphere(tables[tableNumber][1]    , tables[tableNumber][2]+H/1.8, tables[tableNumber][3]-0.1, 0.15))
 
-	for i,v in ipairs(tables[stol].luzy) do
-		setElementDimension(v, tables[stol][4])
-		setElementInterior(v,tables[stol][5])
-		setElementData(v,"type","luza",false)
-		setElementData(v, "stol_id", stol, false)
+	for i,v in ipairs(tables[tableNumber].luzy) do
+		setElementDimension(v, tables[tableNumber][4])
+		setElementInterior(v,tables[tableNumber][5])
+		setElementData(v,"type","pot",false)
+		setElementData(v, "table_id", tableNumber, false)
 	end
 end
 
@@ -76,31 +77,31 @@ for i,v in ipairs(getElementsByType("player")) do
 end
 
 for i,v in ipairs(tables) do
-	v.obiekt=createObject(2964, v[1], v[2], v[3]-1)
-	setElementInterior(v.obiekt, v[5])
-	setElementDimension(v.obiekt, v[4])
-	setElementData(v.obiekt,"customAction",{label="Ułóż bile",resource="lss-billard",funkcja="menu_resetStolu",args={stol=i}})
+	v.object=createObject(2964, v[1], v[2], v[3]-1)
+	setElementInterior(v.object, v[5])
+	setElementDimension(v.object, v[4])
+--	setElementData(v.object,"customAction",{label="Ułóż bile",resource="lss-billard",funkcja="menu_resettableNumberu",args={tableNumber=i}})
 
 	v.cs=createColSphere(v[1], v[2], v[3], 3)
 	setElementInterior(v.cs, v[5])
 	setElementDimension(v.cs, v[4])
-	setElementData(v.cs, "stol_id", i, false)
+	setElementData(v.cs, "table_id", i, false)
 
 --[[ this should be delayed
 	for i,v in ipairs(getElementsWithinColShape(v.cs,"player")) do
-		triggerClientEvent(v, "onBillardNamierzanie", resourceRoot)
+		triggerClientEvent(v, "onNearTable", resourceRoot)
 		giveWeapon(v, 7, 1, true)
 	end
 ]]--
 
-	utworzWszystkieBile(i)
-	utworzLuzy(i)
+	createBalls(i)
+	createPots(i)
 end
 
-local function usunBile(obiekt,stol)
-			for i,v in ipairs(tables[stol].bile) do
-				if (v.obiekt==obiekt) then
-					table.remove(tables[stol].bile, i)
+local function deleteBall(obiekt,tableNumber)
+			for i,v in ipairs(tables[tableNumber].bile) do
+				if (v.object==obiekt) then
+					table.remove(tables[tableNumber].bile, i)
 					destroyElement(obiekt)
 					return true
 				end
@@ -113,15 +114,14 @@ addEventHandler("onColShapeHit", resourceRoot, function(el,md)
 	if (getElementInterior(source)~=getElementInterior(el)) then return end
 	if (getElementDimension(source)~=getElementDimension(el)) then return end
 
-	local idx=getElementData(source, "stol_id")
+	local idx=getElementData(source, "table_id")
 	if not idx then return end
 
 	local st=getElementData(source,"type")
-	if st and st=="luza" then
+	if st and st=="pot" then
 		if getElementType(el)~="object" then return end
 		local model=getElementModel(el)
-		if ballNames[model] and usunBile(el, idx) then
-			-- co z nia robimy? po prostu usuwamy!
+		if ballNames[model] and deleteBall(el, idx) then
 			triggerEvent("broadcastCaptionedEvent", source, ballNames[model].." hits the pot.", 5, 5, true)
 		end
 		return
@@ -129,18 +129,18 @@ addEventHandler("onColShapeHit", resourceRoot, function(el,md)
 
 	if (getElementType(el)~="player") then return end
 
-	triggerClientEvent(el, "onBillardNamierzanie", resourceRoot, tables[idx][1], tables[idx][2], tables[idx][3], W, H)
+	triggerClientEvent(el, "onNearTable", resourceRoot, tables[idx][1], tables[idx][2], tables[idx][3], W, H)
 	giveWeapon(el, 7, 1, true)
 end)
 
 addEventHandler("onColShapeLeave", resourceRoot, function(el,md)
 	if (not md) then return end
 	if (getElementType(el)~="player") then return end
-	triggerClientEvent(el, "onBillardNamierzanie", resourceRoot, nil)
+	triggerClientEvent(el, "onNearTable", resourceRoot, nil)
 	takeWeapon(el,7)
 end)
 
-local function przyKtorymStole(gracz)
+local function przyKtorymtableNumbere(gracz)
 	for i,v in ipairs(tables) do
 		if isElementWithinColShape(gracz,v.cs) then return i end
 	end                                                       
@@ -153,22 +153,21 @@ addEvent("doPoolShot", true)
 addEventHandler("doPoolShot", resourceRoot, function(plr, x,y, x2,y2, bila)
 --	outputDebugString("PoolShot")
 	if not bila then return end
-	if getPedWeapon(plr)~=7 then return end	-- nie ma kija w dloni
+	if getPedWeapon(plr)~=7 then return end
 
-	local stol=przyKtorymStole(plr)
-	if not stol then return end
+	local tableNumber=przyKtorymtableNumbere(plr)
+	if not tableNumber then return end
 
-	-- odnajdujemy tą bilę
-	for i,v in ipairs(tables[stol].bile) do
-			if v.obiekt==bila then
-				local bx,by=getElementPosition(v.obiekt)
+	for i,v in ipairs(tables[tableNumber].bile) do
+			if v.object==bila then
+				local bx,by=getElementPosition(v.object)
 				local force=(getDistanceBetweenPoints2D(x,y,bx,by)*2)
 				
 				v.movement={(bx-x)/force,(by-y)/force}
 --				outputDebugString(tostring((x-x2)/))
-				billardProcess(stol)
-				if (not tables[stol].timer) then
-					tables[stol].timer=setTimer(billardProcess, 75, 0, stol)
+				billardProcess(tableNumber)
+				if (not tables[tableNumber].timer) then
+					tables[tableNumber].timer=setTimer(billardProcess, 75, 0, tableNumber)
 				end
 				return
 			end
@@ -176,48 +175,44 @@ addEventHandler("doPoolShot", resourceRoot, function(plr, x,y, x2,y2, bila)
 end)
 
 
-function billardProcess(stol)
-	if (getTickCount()-(tables[stol].lastTick or 0)<25) then return end
-	tables[stol].lastTick=getTickCount()
+function billardProcess(tableNumber)
+	if (getTickCount()-(tables[tableNumber].lastTick or 0)<25) then return end
+	tables[tableNumber].lastTick=getTickCount()
 
 	local totalMovement=0
 
-	for i,v in ipairs(tables[stol].bile) do
+	for i,v in ipairs(tables[tableNumber].bile) do
 		if v.movement then -- and (v.movement[1]~=0 or v.movement[2]~=0) then
-			-- przesuniecie bili
-			local x,y,z=getElementPosition(v.obiekt)
+
+			local x,y,z=getElementPosition(v.object)
 			local nx=x+(v.movement[1]/10)
 			local ny=y+(v.movement[2]/10)
---			local rotx,roty,rotz=getElementRotation(v.obiekt)
---			setElementRotation(v.obiekt, rotx-v.movement[1]*60, roty, rotz)
 
-			if (nx<tables[stol][1]-W/2 or nx>tables[stol][1]+W/2)  then
+--			local rotx,roty,rotz=getElementRotation(v.object)
+--			setElementRotation(v.object, rotx-v.movement[1]*60, roty, rotz) -- needs calculating
 
+			if (nx<tables[tableNumber][1]-W/2 or nx>tables[tableNumber][1]+W/2)  then
 				v.movement[1]=-v.movement[1]
---				v.movement[2]=-v.movement[2]
---				setElementPosition(v.obiekt,x,y,z)
-			elseif (ny<tables[stol][2]-H/2 or ny>tables[stol][2]+H/2)  then
-
---				v.movement[1]=-v.movement[1]
+			elseif (ny<tables[tableNumber][2]-H/2 or ny>tables[tableNumber][2]+H/2)  then
 				v.movement[2]=-v.movement[2]
---				setElementPosition(v.obiekt,x,y,z)
+--				setElementPosition(v.object,x,y,z)
 			else
---				moveObject(v.obiekt, 75, nx,ny,z)
-				setElementPosition(v.obiekt,nx,ny,z)
+--				moveObject(v.object, 75, nx,ny,z)
+				setElementPosition(v.object,nx,ny,z)
 				v.movement[1]=v.movement[1]/1.02
 				v.movement[2]=v.movement[2]/1.02
 				if (math.abs(v.movement[1])<0.05) then v.movement[1]=0 end
 				if (math.abs(v.movement[2])<0.05) then v.movement[2]=0 end
 			end
-			-- kolizja z innymi bilami
+			-- collisions with other balls
 			local force=math.abs(v.movement[1])+math.abs(v.movement[2])+0.001
-			local kolizji=0
-			for i2,v2 in ipairs(tables[stol].bile) do
-				if (i2~=i and v2.movement and v.obiekt and isElement(v.obiekt)) then
-					local x,y=getElementPosition(v.obiekt)
-					local x2,y2=getElementPosition(v2.obiekt)
+			local collisions=0
+			for i2,v2 in ipairs(tables[tableNumber].bile) do
+				if (i2~=i and v2.movement and v.object and isElement(v.object)) then
+					local x,y=getElementPosition(v.object)
+					local x2,y2=getElementPosition(v2.object)
 					if (getDistanceBetweenPoints2D(x,y,x2,y2)<0.08) then
-						kolizji=kolizji+1
+						collisions=collisions+1
 						local rx=x-x2
 						local ry=y-y2
 						v2.movement[1]=v2.movement[1]-(force*10*rx)
@@ -225,45 +220,48 @@ function billardProcess(stol)
 					end
 				end
 			end
-			if (kolizji>0) then
---				v.movement[1]=v.movement[1]/(1+math.sqrt(kolizji)
---				v.movement[2]=v.movement[2]/(1+math.sqrt(kolizji)
-				v.movement[1]=v.movement[1]/(1+kolizji)
-				v.movement[2]=v.movement[2]/(1+kolizji)
+			if (collisions>0) then
+--				v.movement[1]=v.movement[1]/(1+math.sqrt(collisions)
+--				v.movement[2]=v.movement[2]/(1+math.sqrt(collisions)
+				v.movement[1]=v.movement[1]/(1+collisions)
+				v.movement[2]=v.movement[2]/(1+collisions)
 
 
 			end
 			totalMovement=totalMovement+math.abs(v.movement[1])+math.abs(v.movement[2])
 		end
-		
---		if (v.movement and type(v.movement)=="table") then
 
---		end
 	end
-	-- sprawdzamy czy bile nie sa w luzach
---	for i,v in ipairs(tables[stol].luzy) do
---		outputDebugString("luza " ..i .. "-" .. #getElementsWithinColShape(v))
---	end
 
-	if totalMovement==0 and tables[stol].timer and isTimer(tables[stol].timer) then
-		killTimer(tables[stol].timer)
-		tables[stol].timer=nil
+
+	if totalMovement==0 and tables[tableNumber].timer and isTimer(tables[tableNumber].timer) then
+		killTimer(tables[tableNumber].timer)
+		tables[tableNumber].timer=nil
 	end
 end
 
 
--- triggerServerEvent("doResetTable", resourceRoot, argumenty.stol)
-addEvent("doResetTable", true)
-addEventHandler("doResetTable", resourceRoot, function(plr,stol)
-	if not tables[stol] then return end
+
+
+-- this is a dummy placeholder for code to reset balls on table
+-- usually you should bind it to gui or something like that.
+addCommandHandler("resettable",function(plr,cmd,tn)
+	tn=tonumber(tn)
+
+	if not tn then
+		outputChatBox("Use: /resettable <table number>", plr)
+		return
+	end
+
+	if not tables[tn] then return end
 --[[
-	if (tables[stol].bile) then
-		if (#tables[stol].bile>1) then
+	if (tables[tn].bile) then
+		if (#tables[tn].bile>1) then
 			outputChatBox("(( All balls must be in pots. ))", plr)
 			return
 		end
 	end
 ]]--
-	utworzWszystkieBile(stol)
+	createBalls(tn)
 	triggerEvent("broadcastCaptionedEvent", plr, getPlayerName(plr) .. " repositions balls on table.", 5, 5, true)
 end)                                                                   

@@ -74,8 +74,8 @@ function billard_render()
 	end
 end
 
-addEvent("onBillardNamierzanie",true)
-addEventHandler("onBillardNamierzanie", resourceRoot, function(...)
+addEvent("onNearTable",true)
+addEventHandler("onNearTable", resourceRoot, function(...)
 	table_position[1], table_position[2], Z, W, H = ...
 	if (not table_position[1]) then
 		nearTable=false
