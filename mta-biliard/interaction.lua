@@ -11,7 +11,7 @@ addEventHandler("setPedAnimation", root, function(block,anim,time,loop,updatePos
 
 end)
 
-
+-- sends message to players near source
 addEvent("broadcastCaptionedEvent", true)
 addEventHandler("broadcastCaptionedEvent", root, function(descr, lifetime, range, includesource)
     if (not source or not isElement(source)) then return end
