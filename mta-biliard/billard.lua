@@ -120,9 +120,9 @@ addEventHandler("onColShapeHit", resourceRoot, function(el,md)
 	if st and st=="luza" then
 		if getElementType(el)~="object" then return end
 		local model=getElementModel(el)
-		if rodzajeBil[model] and usunBile(el, idx) then
+		if ballNames[model] and usunBile(el, idx) then
 			-- co z nia robimy? po prostu usuwamy!
-			triggerEvent("broadcastCaptionedEvent", source, rodzajeBil[model].mianownik.." wpada do łuzy.", 5, 5, true)
+			triggerEvent("broadcastCaptionedEvent", source, ballNames[model].." hits the pot.", 5, 5, true)
 		end
 		return
 	end
@@ -256,12 +256,14 @@ end
 addEvent("doResetTable", true)
 addEventHandler("doResetTable", resourceRoot, function(plr,stol)
 	if not tables[stol] then return end
+--[[
 	if (tables[stol].bile) then
 		if (#tables[stol].bile>1) then
-			outputChatBox("(( Najpierw musisz wbić wszystkie bile do łuz ))", plr)
+			outputChatBox("(( All balls must be in pots. ))", plr)
 			return
 		end
 	end
+]]--
 	utworzWszystkieBile(stol)
-	triggerEvent("broadcastCaptionedEvent", plr, getPlayerName(plr) .. " układa ponownie bile na stole.", 5, 5, true)
+	triggerEvent("broadcastCaptionedEvent", plr, getPlayerName(plr) .. " repositions balls on table.", 5, 5, true)
 end)                                                                   

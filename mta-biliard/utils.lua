@@ -1,23 +1,23 @@
-rodzajeBil={
-	[2995]={mianownik="Jedynka połówka", biernik="jedynkę połówkę"},
-	[2996]={mianownik="Dwójka połówka",biernik="dwójkę połówkę"},
-	[2997]={mianownik="Trójka połówka",biernik="trójkę połówkę"},
-	[2998]={mianownik="Czwórka połówka",biernik="czwórkę połówkę"},
-	[2999]={mianownik="Piątka połówka",biernik="piątkę połówkę"},
-	[3000]={mianownik="Szóstka połówka",biernik="szóstkę połówkę"},
-	[3001]={mianownik="Siódemka połówka",biernik="siodemkę połówkę"},
+ballNames={
+	[2995]="One stripped",
+	[2996]="Two stripped",
+	[2997]="Three stripped",
+	[2998]="Four stripped",
+	[2999]="Five stripped",
+	[3000]="Six stripped",
+	[3001]="Seven stripped",
 
-	[3002]={mianownik="Jedynka cała", biernik="jedynkę całą"},
+	[3002]="One solid", 
 
-	[3003]={mianownik="Biała bila",biernik="białą bilę"},
+	[3003]="Cue ball",
 
-	[3100]={mianownik="Dwójka cała",biernik="dwójkę całą"},
-	[3101]={mianownik="Trójka cała",biernik="trójkę całą"},
-	[3102]={mianownik="Czwórka cała",biernik="czwórkę całą"},
-	[3103]={mianownik="Piątka cała",biernik="piątkę całą"},
-	[3104]={mianownik="Szóstka cała",biernik="szóstkę całą"},
-	[3105]={mianownik="Siódemka cała",biernik="siodemkę całą"},
-	[3106]={mianownik="Czarna bila (ósemka cała)",biernik="czarną bilę (ósemkę całą)"},
+	[3100]="Two solid",
+	[3101]="Three solid",
+	[3102]="Four solid",
+	[3103]="Five solid",
+	[3104]="Six solid",
+	[3105]="Seven solid",
+	[3106]="Eight-ball",
 }
 
 

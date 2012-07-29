@@ -13,11 +13,11 @@ local s_w, s_h = guiGetScreenSize ()
 local function doPoolShot(x,y,x2,y2)
 	local hit, hx,hy,hz, hitElement=processLineOfSight(x,y, Z, x2,y2,Z, false, false, false,true, false)
 	if not hit or not hitElement then
-		triggerServerEvent("broadcastCaptionedEvent", localPlayer, getPlayerName(localPlayer) .. " nie trafia w żadną bilę.", 5, 5, true)
+		triggerServerEvent("broadcastCaptionedEvent", localPlayer, getPlayerName(localPlayer) .. " doesn't hit any ball.", 5, 5, true)
 	end
 	local model=getElementModel(hitElement)
-	if (rodzajeBil[model]) then
-		triggerServerEvent("broadcastCaptionedEvent", localPlayer, getPlayerName(localPlayer) .. " trafia "..rodzajeBil[model].biernik..".", 5, 5, true)
+	if (ballNames[model]) then
+		triggerServerEvent("broadcastCaptionedEvent", localPlayer, getPlayerName(localPlayer) .. " hits "..ballNames[model]..".", 5, 5, true)
 	end
 	triggerServerEvent("doPoolShot", resourceRoot, localPlayer, x,y,x2,y2, hitElement)
 end
