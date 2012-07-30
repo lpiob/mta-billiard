@@ -1,5 +1,8 @@
 <meta>
-	<info author="Wielebny" type="script" name="mta-billiard" website="https://github.com/lpiob/mta-billiard" />
+	<info author="Wielebny" type="script" name="mta-billiard" website="https://github.com/lpiob/mta-billiard" version="1.0.1" />
+
+	<file src="audio/108615__juskiddink__billiard-balls-single-hit-dry.ogg" />
+
 	<script src="utils.lua" type="client" />
 	<script src="utils.lua" type="server" />
 

@@ -88,4 +88,17 @@ addEventHandler("onNearTable", resourceRoot, function(...)
 end)
 
 
+local ballSounds={
+	"audio/108615__juskiddink__billiard-balls-single-hit-dry.ogg",
+--	"audio/108616__juskiddink__hard-pop.ogg"
+}
 
+addEvent("playBallSound", true)
+addEventHandler("playBallSound", resourceRoot, function()
+--	outputDebugString("BS")
+	if not nearTable then return end
+	local x,y,z=getElementPosition(localPlayer)
+	local x2,y2,z2=getElementPosition(source)
+	if getDistanceBetweenPoints3D(x,y,z,x2,y2,z2)>10 then return end
+	playSound3D(ballSounds[math.random(1,#ballSounds)], x2,y2,z2)
+end)

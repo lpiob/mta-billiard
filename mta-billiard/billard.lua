@@ -40,7 +40,7 @@ local function createBalls(tableNumber)
   for i=1,15 do
   	tables[tableNumber].bile[i]={}
 ----	bile[i].object=utworzBile(ballObjectIDs[i], 936.71+(row/14), 2507.05+(wrzedzie/14)-(row/28))
-	tables[tableNumber].bile[i].object=utworzBile(ballObjectIDs[i], tables[tableNumber][1]-W*10/30+((5-row)/14), tables[tableNumber][2]+(wrzedzie/14)-(row/28)+0.035, tables[tableNumber][3], tables[tableNumber][4],tables[tableNumber][5])
+	tables[tableNumber].bile[i].object=utworzBile(ballObjectIDs[i], tables[tableNumber][1]-W*10/30+((5-row)/14), tables[tableNumber][2]+(wrzedzie/12)-(row/28)+0.035, tables[tableNumber][3], tables[tableNumber][4],tables[tableNumber][5])
 	tables[tableNumber].bile[i].movement={0,0}
 	wrzedzie=wrzedzie+1
 	if (wrzedzie==row) then
@@ -140,10 +140,10 @@ addEventHandler("onColShapeLeave", resourceRoot, function(el,md)
 	takeWeapon(el,7)
 end)
 
-local function przyKtorymtableNumbere(gracz)
+local function findTableNumber(plr)
 	for i,v in ipairs(tables) do
-		if isElementWithinColShape(gracz,v.cs) then return i end
-	end                                                       
+		if isElementWithinColShape(plr,v.cs) then return i end
+	end
 	return nil
 end
 
@@ -155,7 +155,7 @@ addEventHandler("doPoolShot", resourceRoot, function(plr, x,y, x2,y2, bila)
 	if not bila then return end
 	if getPedWeapon(plr)~=7 then return end
 
-	local tableNumber=przyKtorymtableNumbere(plr)
+	local tableNumber=findTableNumber(plr)
 	if not tableNumber then return end
 
 	for i,v in ipairs(tables[tableNumber].bile) do
@@ -212,11 +212,16 @@ function billardProcess(tableNumber)
 					local x,y=getElementPosition(v.object)
 					local x2,y2=getElementPosition(v2.object)
 					if (getDistanceBetweenPoints2D(x,y,x2,y2)<0.08) then
+
 						collisions=collisions+1
 						local rx=x-x2
 						local ry=y-y2
 						v2.movement[1]=v2.movement[1]-(force*10*rx)
 						v2.movement[2]=v2.movement[2]-(force*10*ry)
+
+						if (force>0.25) then
+							triggerClientEvent(root, "playBallSound", v2.object)
+						end
 					end
 				end
 			end

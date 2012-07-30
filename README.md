@@ -55,5 +55,11 @@ Todo
 - Other camera view-modes.
 
 
+Credits
+-------
+
+Sounds are made by juskiddink <http://www.freesound.org/people/juskiddink/> and are licensed under the attribution license.
+
+- http://www.freesound.org/people/juskiddink/sounds/108615/
 
 
