@@ -13,7 +13,7 @@ local s_w, s_h = guiGetScreenSize ()
 local function doPoolShot(x,y,x2,y2)
 	local hit, hx,hy,hz, hitElement=processLineOfSight(x,y, Z, x2,y2,Z, false, false, false,true, false)
 	if not hit or not hitElement then
-		triggerServerEvent("broadcastCaptionedEvent", localPlayer, getPlayerName(localPlayer) .. " doesn't hit any ball.", 5, 5, true)
+		return triggerServerEvent("broadcastCaptionedEvent", localPlayer, getPlayerName(localPlayer) .. " doesn't hit any ball.", 5, 5, true)
 	end
 	local model=getElementModel(hitElement)
 	if (ballNames[model]) then
