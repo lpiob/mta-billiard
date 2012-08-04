@@ -41,7 +41,7 @@ You should replace /resettable command with some kind of GUI.
 
 You should alter broadcastCaptionedEvent in interaction.lua to suit your server.
 
-You should consider extending this code and sharing back your changes. Main project repository is accessible at https://github.com/lpiob/mta-billiard
+You should consider extending this code and sharing back your changes.
 
 Todo
 ----
