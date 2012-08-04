@@ -13,11 +13,11 @@ This is a billiard script, that was originally developped for LSS-RP.pl server.
 Demonstration video: http://www.youtube.com/watch?v=vB5U1Sqy37U
 
 
-It's (c) Wielebny 2012
+It's (c) Wielebny, qaisjp 2012
 
 Licence: CC-BY-SA - http://creativecommons.org/licenses/by-sa/3.0/deed.en
 
-If you run this resource on your server, I would like to be attributed in game or your website.
+If you run this resource on your server, We would like to be attributed in game or your website.
 
 
 How to use
