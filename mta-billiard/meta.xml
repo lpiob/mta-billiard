@@ -7,7 +7,7 @@
 	<script src="utils.lua" type="server" />
 
 	<script src="b_c.lua" type="client" />
-	<script src="billard.lua" type="server" />
+	<script src="billiard.lua" type="server" />
 
 	<script src="interaction.lua" type="server" />
 </meta>
