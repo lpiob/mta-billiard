@@ -8,7 +8,7 @@ Billiard script for Multi Theft Auto.
 About
 -----
 
-This is a billiard script, that was originally developped for LSS-RP.pl server.
+This is a billiard script which was originally developed for LSS-RP.pl server.
 
 Demonstration video: http://www.youtube.com/watch?v=vB5U1Sqy37U
 
